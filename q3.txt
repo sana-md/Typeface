@@ -1,0 +1,25 @@
+Import fastapi
+@app.get(‘/1/’)
+def api1 : 
+	Return elasticsearch.data(“api1”)
+
+@app.post(‘/save1/’)
+Def save1():
+	elasticsearch.data.failed_messages.put(elasticsearch.data.failed_messages()+1)
+@app.get(‘saved2’)
+Def saved2():
+	Return elasticsearch.data.failed_messages()
+
+To run the code: 
+Uvicorn api1:app -- reload
+
+To deploy : 
+Use gunicorn and nginx, nginx protects the gunicorn grom having the non-http requests to protect it from hack.
+
+TS code to call the HTTP :
+Var response=HTTP.response(“https://www.api1.com”,”get”)
+if(respnse.status!=201 and response.status!=200): 
+	HTTPS.response(“https://www.save1.com”,post)
+
+Var failedrequests = HTTP.response(“https://www.saved2.com”,get)
+print(failedrequests)
